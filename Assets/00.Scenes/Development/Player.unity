@@ -484,10 +484,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickCheckRadius: 2.03
   pickUpPos: {x: 0, y: 2, z: 0}
-  releasePosMultiplier: 2
+  releasePosMultiplier: 3
   throwVector: {x: 1, y: 1}
-  throwpower: 5
-  smallLetterThrowPower: 3
+  throwpower: 3
+  smallLetterThrowPower: 5
   IsPickUp: 0
   whatIsAlphabet:
     serializedVersion: 2

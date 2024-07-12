@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (!alphabet) return;
+            if (!alphabet.pickUpAlphabet) return;
+
             alphabet.RotateAlphabet();
         }
     }
