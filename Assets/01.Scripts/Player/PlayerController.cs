@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public PlayerAlphabet alphabet;
+    public PlayerAlphabetAbility ability;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         alphabet = GetComponent<PlayerAlphabet>();
+        ability = GetComponent<PlayerAlphabetAbility>();
     }
 
     private void Update()

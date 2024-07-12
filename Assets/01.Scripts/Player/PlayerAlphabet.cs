@@ -23,6 +23,17 @@ public class PlayerAlphabet : MonoBehaviour
     private RigidbodyConstraints2D pickUpAlphabetConstraints;
     private int pickUpAlphabetRotation;
 
+    public bool IsReleaseFront = true; // 앞에 두기 위해 살짝 던지는 기능 킬 것인가?.
+
+    private PlayerAlphabetAbility ability;
+
+    private void Start()
+    {
+        ability = GameManager.Instance.PlayerInstance.ability;
+        if (!ability)
+            Debug.LogError("PlayerAlphabetAbility Is Not Found");
+    }
+
     private void Update()
     {
         if (IsPickUp)
@@ -98,10 +109,13 @@ public class PlayerAlphabet : MonoBehaviour
         }
         else
         {
-            Vector3 releasePos = Vector3.zero;
-            releasePos.x = lookDir * releasePosMultiplier;
+            if (IsReleaseFront)
+            {
+                Vector3 releasePos = Vector3.zero;
+                releasePos.x = lookDir * releasePosMultiplier;
 
-            rigidbody.velocity = releasePos;
+                rigidbody.velocity = releasePos;
+            }
         }
 
 
