@@ -33,7 +33,13 @@ public class PlayerAlphabet : MonoBehaviour
     private void Update()
     {
         if (IsPickUp)
+        {
+            //if (pickUpAlphabet.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid))
+            //{
+            //    rigid.position = transform.position + pickUpPos;
+            //}
             pickUpAlphabet.transform.position = transform.position + pickUpPos;
+        }
 
     }
 
@@ -55,7 +61,7 @@ public class PlayerAlphabet : MonoBehaviour
 
     private void HoldAlphabet()
     {
-        if (!pickUpAlphabet.TryGetComponent<CircleCollider2D>(out CircleCollider2D collider))
+        if (!pickUpAlphabet.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider))
         {
             Debug.LogError("Pickup Alphabet Is not Contain Collider");
             return;
@@ -73,13 +79,14 @@ public class PlayerAlphabet : MonoBehaviour
 
         pickUpAlphabetConstraints = rigidbody.constraints;
         rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        
-        collider.enabled = false;
+
+        //collider.enabled = false;
+        rigidbody.gravityScale = 0;
     }
 
     private void ReleaseAlphabet()
     {
-        if (!pickUpAlphabet.TryGetComponent<CircleCollider2D>(out CircleCollider2D collider))
+        if (!pickUpAlphabet.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider))
         {
             Debug.LogError("Pickup Alphabet Is not Contain Collider");
             return;
@@ -123,8 +130,7 @@ public class PlayerAlphabet : MonoBehaviour
 
 
         collider.enabled = true;
-
-
+        rigidbody.gravityScale = 1;
     }
 
     public void RotateAlphabet()

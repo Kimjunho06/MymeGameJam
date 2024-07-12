@@ -11,7 +11,7 @@ public enum MultySwitchState
 
 public class MultySwitch : Switch
 {
-    MultySwitchState state = MultySwitchState.None;
+    public MultySwitchState state = MultySwitchState.None;
 
     public MultySwitch[] switches;
     public bool IsPress;

@@ -6,7 +6,9 @@ public class Alphabet : MonoBehaviour
 {
     public AlphabetSO AlphabetSO;
     private SpriteRenderer spriteRenderer;
-    
+
+    public Vector3 size;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,6 +20,7 @@ public class Alphabet : MonoBehaviour
 
     private void Start()
     {
+        transform.localScale = size;
     }
 
     private void Update()

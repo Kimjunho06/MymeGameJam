@@ -8,6 +8,6 @@ public class MoveActionObject : SwitchActionObject
 
     protected override void InvokeAction()
     {
-
+        Debug.Log("move");
     }
 }

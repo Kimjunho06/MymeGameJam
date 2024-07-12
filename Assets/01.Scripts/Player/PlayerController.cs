@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
     public float DefaultMoveSpeed;
 
+    public bool IsUnlockable;
+    public bool IsElectronic;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
