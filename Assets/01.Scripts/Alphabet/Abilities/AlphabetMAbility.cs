@@ -66,4 +66,9 @@ public class AlphabetMAbility : Ability
             }
         }
     }
+
+    public override void ResetAbility(PlayerController player)
+    {
+
+    }
 }

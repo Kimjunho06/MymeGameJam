@@ -36,6 +36,16 @@ public class PlayerAlphabetAbility : MonoBehaviour
         _typeDictionary[alphabetSO.alphabetType].PlayAbility(GameManager.Instance.PlayerInstance);
     }
 
+    public void ResetAbility(AlphabetSO alphabetSO)
+    {
+        if (!GameManager.Instance.PlayerInstance)
+        {
+            Debug.LogError("Player Is Null");
+            return;
+        }
+        _typeDictionary[alphabetSO.alphabetType].ResetAbility(GameManager.Instance.PlayerInstance);
+    }
+
     private void AddState(AlphabetType type, Ability ability)
     {
         _typeDictionary.Add(type, ability);

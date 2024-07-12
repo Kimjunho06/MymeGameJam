@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public PlayerAlphabet alphabet;
     public PlayerAlphabetAbility ability;
 
+    public float DefaultMoveSpeed;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -20,6 +22,11 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Player Not Contain PlayerAlphabet");
         if (!ability)
             Debug.LogError("Player Not Contain PlayerAlphabetAbility");
+    }
+
+    private void Start()
+    {
+        DefaultMoveSpeed = playerMovement.moveSpeed;
     }
 
     private void Update()
@@ -47,6 +54,10 @@ public class PlayerController : MonoBehaviour
             if (!alphabet.pickUpAlphabet.AlphabetSO.isSamllLetter)
             {
                 ability.InvokeAbility(alphabet.pickUpAlphabet.AlphabetSO);
+            }
+            else
+            {
+                ability.ResetAbility(alphabet.pickUpAlphabet.AlphabetSO);
             }
         }
     }

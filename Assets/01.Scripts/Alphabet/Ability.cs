@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     public abstract void PlayAbility(PlayerController player);
+    public abstract void ResetAbility(PlayerController player);
 
     public virtual void Init()
     {
