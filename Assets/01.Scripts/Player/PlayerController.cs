@@ -13,13 +13,20 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         alphabet = GetComponent<PlayerAlphabet>();
         ability = GetComponent<PlayerAlphabetAbility>();
+
+        if (!playerMovement)
+            Debug.LogError("Player Not Contain PlayerMovement");
+        if (!alphabet)
+            Debug.LogError("Player Not Contain PlayerAlphabet");
+        if (!ability)
+            Debug.LogError("Player Not Contain PlayerAlphabetAbility");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            alphabet.PickUp();    
+            alphabet.PickUp();
         }
 
         if (Input.GetKeyDown(KeyCode.CapsLock))
@@ -33,6 +40,14 @@ public class PlayerController : MonoBehaviour
             if (!alphabet.pickUpAlphabet) return;
 
             alphabet.RotateAlphabet();
+        }
+
+        if (alphabet.pickUpAlphabet)
+        {
+            if (!alphabet.pickUpAlphabet.AlphabetSO.isSamllLetter)
+            {
+                ability.InvokeAbility(alphabet.pickUpAlphabet.AlphabetSO);
+            }
         }
     }
 }

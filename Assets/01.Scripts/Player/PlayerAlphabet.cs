@@ -25,13 +25,9 @@ public class PlayerAlphabet : MonoBehaviour
 
     public bool IsReleaseFront = true; // 앞에 두기 위해 살짝 던지는 기능 킬 것인가?.
 
-    private PlayerAlphabetAbility ability;
-
     private void Start()
     {
-        ability = GameManager.Instance.PlayerInstance.ability;
-        if (!ability)
-            Debug.LogError("PlayerAlphabetAbility Is Not Found");
+        
     }
 
     private void Update()

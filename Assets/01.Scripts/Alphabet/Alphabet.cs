@@ -10,6 +10,10 @@ public class Alphabet : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!AlphabetSO)
+        {
+            Debug.LogError($"{gameObject.name} : AlphabetSO is Not Found");
+        }
     }
 
     private void Start()
