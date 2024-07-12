@@ -9,6 +9,8 @@ public class Alphabet : MonoBehaviour
 
     public Vector3 size;
 
+    public bool changeCollider = true;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,9 +27,24 @@ public class Alphabet : MonoBehaviour
 
     private void Update()
     {
-        if (AlphabetSO.isSamllLetter)
+        if (!AlphabetSO.isSamllLetter)
+        {
             spriteRenderer.sprite = AlphabetSO.capitalLetterSprite;
+        }
         else
+        {
             spriteRenderer.sprite = AlphabetSO.smallLetterSprite;
+        }
+
+        if (changeCollider)
+        {
+            changeCollider = false;
+            if (transform.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider))
+            {
+                Destroy(collider);
+            }
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
+        
     }
 }

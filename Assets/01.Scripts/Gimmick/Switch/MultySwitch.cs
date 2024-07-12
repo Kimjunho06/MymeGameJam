@@ -35,6 +35,8 @@ public class MultySwitch : Switch
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!IsElectronicSwitchCheck()) return;
+
         IsPress = IsPressedSwitch(collision);
     }
 

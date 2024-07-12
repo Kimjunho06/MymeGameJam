@@ -42,7 +42,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.CapsLock))
         {
             if (alphabet.IsPickUp)
+            {
                 alphabet.pickUpAlphabet.AlphabetSO.CaseChange();
+                alphabet.pickUpAlphabet.changeCollider = true;
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
