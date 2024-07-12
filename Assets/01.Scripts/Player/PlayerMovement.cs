@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpPower = 3f;
     public float groundCheckDistance = 0.6f;
+    public float wallCheckDistance = 0.6f;
+
+    public float wallSlideMultiplier = 0.7f;
 
     [Header("Develop Parameters")]
     private float XInput;
@@ -19,10 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private bool IsJump;
 
     public LayerMask whatIsGround;
+    public LayerMask whatIsWall;
 
     private Rigidbody2D rb;
-
-
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         IsMoved = (Mathf.Abs(XInput) > 0.05f || YInput > 0.05f) ? true : false;
 
+        WallSlide();
         if (Mathf.Abs(XInput) > 0.05f)
         {
             Move();
@@ -83,6 +86,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void WallSlide()
+    {
+        if (IsWallDetect())
+        {
+            Vector3 pos = rb.velocity;
+            pos.y *= wallSlideMultiplier;
+
+            rb.velocity = pos;
+        }
+    }
+
     private void MoveAnimation()
     {
 
@@ -91,11 +105,18 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGroundDetect()
     {
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(transform.position, Vector3.down, groundCheckDistance, whatIsGround);
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+        hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.red);
 
         return hit;
     }
 
-    
+    public bool IsWallDetect()
+    {
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, whatIsWall);
+        Debug.DrawRay(transform.position, Vector2.right * wallCheckDistance, Color.red);
+
+        return hit;
+    }
 }
