@@ -11,6 +11,5 @@ public class NextStageButton : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
             NextStageEvent?.Invoke();
-        
     }
 }

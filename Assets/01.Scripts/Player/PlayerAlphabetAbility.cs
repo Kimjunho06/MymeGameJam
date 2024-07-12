@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerAlphabetAbility : MonoBehaviour
 {
     private Dictionary<AlphabetType, Ability> _typeDictionary = new Dictionary<AlphabetType, Ability>();
-    
+
     private void Awake()
     {
         foreach (AlphabetType stateEnum in Enum.GetValues(typeof(AlphabetType)))
@@ -18,6 +18,14 @@ public class PlayerAlphabetAbility : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        foreach (var state in _typeDictionary)
+        {
+            state.Value.Init();
+        }
+    }
+
     public void InvokeAbility(AlphabetSO alphabetSO)
     {
         if (!GameManager.Instance.PlayerInstance)
@@ -25,7 +33,6 @@ public class PlayerAlphabetAbility : MonoBehaviour
             Debug.LogError("Player Is Null");
             return;
         }
-
         _typeDictionary[alphabetSO.alphabetType].PlayAbility(GameManager.Instance.PlayerInstance);
     }
 

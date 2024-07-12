@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private void Awake()
     {
@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         IsMoved = (Mathf.Abs(XInput) > 0.05f || YInput > 0.05f) ? true : false;
 
         WallSlide();
+        rb.velocity += new Vector2(0, -9.8f) * Time.fixedDeltaTime;
         if (Mathf.Abs(XInput) > 0.05f)
         {
             Move();
@@ -70,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 moveDir = new Vector2(XInput, 0);
         moveDir *= moveSpeed;
         moveDir.y = rb.velocity.y;
-
+        
         rb.velocity = moveDir;
     }
 
