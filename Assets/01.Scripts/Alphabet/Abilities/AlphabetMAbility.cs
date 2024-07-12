@@ -27,7 +27,7 @@ public class AlphabetMAbility : Ability
             if (magnet.IsPlayerCheck())
             {
                 Vector3 playerDir = player.playerMovement.rb.velocity;
-                Vector3 moveDir = (magnet.transform.position - player.transform.position).normalized;
+                Vector3 moveDir = (magnet.transform.position - player.alphabet.pickUpAlphabet.transform.position).normalized;
                 
                 float dist = Vector2.Distance(player.alphabet.pickUpAlphabet.transform.position, magnet.transform.position);
                 
@@ -35,15 +35,34 @@ public class AlphabetMAbility : Ability
                 
                 Vector2 result = playerDir + moveDir;
 
-                //player.playerMovement.rb.velocity = result.normalized * magnetPower;
-                if (dist < 1)
+                if (magnet.IsBoxCheck)
                 {
-                    player.playerMovement.rb.velocity = Vector2.zero;
-                    return;
+                    if (player.alphabet.pickUpAlphabet.transform.position.y >= magnet.transform.position.y - magnet.attatchDist)
+                    {
+                        player.playerMovement.rb.velocity = Vector2.zero;
+                        return;
+                    }
+
+                    Vector2 playerPos = player.playerMovement.rb.velocity;
+                    result.x = 0;
+                    playerPos.x = 0;
+    
+    
+                    player.playerMovement.rb.velocity = Vector2.Lerp(playerPos, result, 0.1f * magnetPower);
                 }
+                else
+                {
+                    if (dist < magnet.attatchDist)
+                    {
+                        player.playerMovement.rb.velocity = Vector2.zero;
+                        return;
+                    }
 
 
-                player.playerMovement.rb.velocity = Vector2.Lerp(player.playerMovement.rb.velocity, result, 0.1f * magnetPower);
+                    player.playerMovement.rb.velocity = Vector2.Lerp(player.playerMovement.rb.velocity, result, 0.1f * magnetPower);
+                }
+                
+                
             }
         }
     }
