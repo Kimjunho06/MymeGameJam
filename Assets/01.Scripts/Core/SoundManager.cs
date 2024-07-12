@@ -10,16 +10,16 @@ public enum SoundEnum
     SOUNDCOUNT
 }
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField]
     private AudioMixer _masterMixer;
 
     [SerializeField]
-    private AudioMixerGroup _bgmGroup;
+    private AudioClip _bgm;
 
     [SerializeField]
-    private AudioMixerGroup _sfxGroup;
+    private AudioClip _sfx;
 
     public AudioClip uiClickSoundClip;
     public AudioClip playerThrowingSoundClip;
@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
             GameObject go = new GameObject { name = soundNames[i] };
             _audioSources[i] = go.AddComponent<AudioSource>();
             _audioSources[i].playOnAwake = false;
-            _audioSources[i].outputAudioMixerGroup = (soundNames[i] == "BGM" ? _bgmGroup : _sfxGroup);
+            _audioSources[i].clip = (soundNames[i] == "BGM" ? _bgm : _sfx);
             go.transform.parent = transform;
         }
 

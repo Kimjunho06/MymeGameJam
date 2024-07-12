@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
-    private Alphabet alphabet;
+    public PlayerMovement playerMovement;
+    public PlayerAlphabet alphabet;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        alphabet = GetComponent<Alphabet>();
+        alphabet = GetComponent<PlayerAlphabet>();
     }
 
     private void Update()
     {
-        if (alphabet.IsPickUp)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (playerMovement.IsMoved)
-            {
-
-            }
+            alphabet.PickUp();    
         }
-        else
+
+        if (Input.GetKeyDown(KeyCode.CapsLock))
         {
-
+            if (alphabet.IsPickUp)
+                alphabet.pickUpAlphabet.AlphabetSO.CaseChange();
         }
-    }
 
-    public bool IsGroundDetect()
-    {
-        return true;
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            alphabet.RotateAlphabet();
+        }
     }
 }
