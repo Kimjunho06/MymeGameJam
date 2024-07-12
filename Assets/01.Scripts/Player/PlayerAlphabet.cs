@@ -12,6 +12,7 @@ public class PlayerAlphabet : MonoBehaviour
 
     public Vector2 throwVector = Vector2.one;
     public float throwpower = 2f;
+    public float smallLetterThrowPower = 3f;
 
     [Header("Develop Parameters")]
     public bool IsPickUp;
@@ -86,7 +87,12 @@ public class PlayerAlphabet : MonoBehaviour
         if (GameManager.Instance.PlayerInstance.playerMovement.IsMoved)
         {
             //Throw
-            Vector3 throwVec = throwVector * throwpower;
+            Vector3 throwVec = throwVector;
+            if (pickUpAlphabet.AlphabetSO.isSamllLetter)
+                throwVec *= smallLetterThrowPower;
+            else
+                throwVec *= throwpower;
+
             throwVec.x *= lookDir;
             rigidbody.velocity = throwVec;
         }

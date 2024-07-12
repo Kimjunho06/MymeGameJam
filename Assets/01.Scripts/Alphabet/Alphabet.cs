@@ -18,7 +18,7 @@ public class Alphabet : MonoBehaviour
 
     private void Update()
     {
-        if (AlphabetSO.isCaptialLetter)
+        if (AlphabetSO.isSamllLetter)
             spriteRenderer.sprite = AlphabetSO.capitalLetterSprite;
         else
             spriteRenderer.sprite = AlphabetSO.smallLetterSprite;
