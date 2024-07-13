@@ -46,6 +46,8 @@ public class GameManager : MonoSingleton<GameManager>
     public SpriteRenderer shineObj;
     private float shineA;
 
+    private bool isSeeManhwa;
+    
     private void Start()
     {
         SoundManager.Instance.Play(SoundManager.Instance._bgm, SoundEnum.BGM);
@@ -55,6 +57,7 @@ public class GameManager : MonoSingleton<GameManager>
         color.a = 0;
 
         shineObj.color = color;
+        isSeeManhwa = false;
     }
 
     private void Update()
@@ -83,7 +86,28 @@ public class GameManager : MonoSingleton<GameManager>
             }
             
             if (!IsGameStart && MCSceneManager.Instance.CurrentSceneIndex != 1 && MCSceneManager.Instance.CurrentSceneIndex != 5)
+            {
+                if (isSeeManhwa) return;
+
+                isSeeManhwa = true;
                 MCSceneManager.Instance.ChangeScene(1);
+            }
+        }
+
+        if (!Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Input.anyKeyDown)
+            {
+                if (!IsGameStart && MCSceneManager.Instance.CurrentSceneIndex != 1 && MCSceneManager.Instance.CurrentSceneIndex != 5)
+                {
+                    if (isSeeManhwa) return;
+
+                    isSeeManhwa = true;
+
+                    SoundManager.Instance.ClickSound();
+                    MCSceneManager.Instance.ChangeScene(1);
+                }
+            }
         }
     }
 
