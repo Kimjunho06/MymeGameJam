@@ -7,6 +7,8 @@ public class CallAlphabet : MonoBehaviour
     public AlphabetType type;
     private PlayerController player;
 
+    public ParticleSystem particle;
+
     private bool isUsed = false;
 
     private void Start()
@@ -20,6 +22,7 @@ public class CallAlphabet : MonoBehaviour
         {
             if (isUsed) return;
 
+            particle.gameObject.SetActive(false);
             isUsed = true;
             if (type == AlphabetType.M)
             {

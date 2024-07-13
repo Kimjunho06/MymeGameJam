@@ -3085,7 +3085,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   IsBoxCheck: 1
-  boxCheckSize: {x: 15.3, y: 18.64}
+  boxCheckSize: {x: 15.3, y: 25.8}
 --- !u!1 &460968582
 GameObject:
   m_ObjectHideFlags: 0
