@@ -14,8 +14,6 @@ public class Alphabet : MonoBehaviour
 
     public LayerMask whatIsWall;
 
-    private bool IsWidthLimit;
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,6 +25,17 @@ public class Alphabet : MonoBehaviour
 
     private void Start()
     {
+        if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid)) { }
+        if (AlphabetSO.alphabetType == AlphabetType.M)
+        {
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        if (AlphabetSO.alphabetType == AlphabetType.V)
+        {
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+
         transform.localScale = size;
     }
 
@@ -94,11 +103,9 @@ public class Alphabet : MonoBehaviour
             if (hit)
             {
                 GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = 0;
-                IsWidthLimit = true;
                 return;
             }
         }
-        IsWidthLimit = false;
         GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
     }
 
