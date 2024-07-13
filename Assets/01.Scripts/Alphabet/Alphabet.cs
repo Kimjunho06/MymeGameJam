@@ -100,7 +100,6 @@ public class Alphabet : MonoBehaviour
 
     private void CheckWidthWall()
     {
-        Debug.Log("A");
         float lookDir = GameManager.Instance.PlayerInstance.playerMovement.playerLookDir;
         if (transform.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider)){}
 
@@ -125,15 +124,6 @@ public class Alphabet : MonoBehaviour
                 GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = 0;
                 return;
             }
-        }
-
-        if (GameManager.Instance.PlayerInstance.playerMovement.IsGroundDetect())
-        {
-            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
-        }
-        if (Mathf.Abs(GameManager.Instance.PlayerInstance.playerMovement.XInput) < 0.05f && Mathf.Abs(GameManager.Instance.PlayerInstance.playerMovement.YInput) < 0.05f)
-        {
-            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
         }
     }
 

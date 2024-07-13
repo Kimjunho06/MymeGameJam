@@ -8,14 +8,17 @@ public abstract class SwitchActionObject : MonoBehaviour
 
     private void Update()
     {
-        foreach (var sw in needSwitch)
+        if (needSwitch != null)
         {
-            if (!sw.IsPressed)
+            foreach (var sw in needSwitch)
             {
-                ResetAction();
-                return;
-            } 
+                if (!sw.IsPressed)
+                {
+                    ResetAction();
+                    return;
+                } 
 
+            }
         }
         InvokeAction();
     }

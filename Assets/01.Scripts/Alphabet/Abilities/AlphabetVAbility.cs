@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AlphabetVAbility : Ability
 {
-    private float _addSpeed = 2f;
+    private float _addSpeed = 6f;
     
     public override void Init()
     {
