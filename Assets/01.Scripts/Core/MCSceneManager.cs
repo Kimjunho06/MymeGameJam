@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,8 +27,13 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
     /// <param name="sceneIndex"></param>
     public void ChangeScene(int sceneIndex)
     {
-        CurrentSceneIndex = sceneIndex;
-        SceneManager.LoadScene(sceneIndex);
+        UIManager.Instance.FadeIn();
+
+        StartCoroutine(NextSceneDelay(()=>
+        {
+            CurrentSceneIndex = sceneIndex;
+            SceneManager.LoadScene(sceneIndex);
+        }));
     }
 
     /// <summary>
@@ -55,6 +61,12 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
         ChangeScene(CurrentSceneIndex);
     }
 
-    // Fade
-
+    private IEnumerator NextSceneDelay(Action action)
+    {
+        while (!UIManager.Instance.IsFadeEnd)
+        {
+            yield return null;
+        }
+        action?.Invoke();
+    }
 }
