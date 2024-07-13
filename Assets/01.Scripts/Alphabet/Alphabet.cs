@@ -9,9 +9,11 @@ public class Alphabet : MonoBehaviour
 
     public Vector3 size;
 
-    public bool changeCollider = true;
+    public bool changeCollider = false;
 
     public LayerMask whatIsWall;
+
+    public Vector2[] ePoints;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class Alphabet : MonoBehaviour
     private void Start()
     {
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid)) { }
+        if (TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider)) { }
         if (AlphabetSO.alphabetType == AlphabetType.M)
         {
             rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -33,8 +36,13 @@ public class Alphabet : MonoBehaviour
         {
             rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+        if (AlphabetSO.alphabetType == AlphabetType.E)
+        {
+            ePoints = collider.points;
+        }
 
         transform.localScale = size;
+        changeCollider = true;
     }
 
     private void Update()
@@ -55,7 +63,16 @@ public class Alphabet : MonoBehaviour
             {
                 Destroy(collider);
             }
-            gameObject.AddComponent<PolygonCollider2D>();
+            PolygonCollider2D col = gameObject.AddComponent<PolygonCollider2D>();
+
+            if (!AlphabetSO.isSamllLetter)
+            {
+                if (AlphabetSO.alphabetType == AlphabetType.E)
+                {
+                    col.points = ePoints;
+                    collider.points = ePoints;
+                }
+            }
         }
 
         if (GameManager.Instance.PlayerInstance.alphabet.IsPickUp)
@@ -74,6 +91,10 @@ public class Alphabet : MonoBehaviour
             //{
             //    CheckHeightWall();
             //}
+        }
+        else
+        {
+            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
         }
     }
 
@@ -102,12 +123,15 @@ public class Alphabet : MonoBehaviour
             if (hit)
             {
                 GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = 0;
-                Debug.Log("B");
                 return;
             }
         }
 
         if (GameManager.Instance.PlayerInstance.playerMovement.IsGroundDetect())
+        {
+            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
+        }
+        if (Mathf.Abs(GameManager.Instance.PlayerInstance.playerMovement.XInput) < 0.05f && Mathf.Abs(GameManager.Instance.PlayerInstance.playerMovement.YInput) < 0.05f)
         {
             GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
         }
