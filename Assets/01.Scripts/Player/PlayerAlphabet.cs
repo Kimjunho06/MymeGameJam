@@ -21,7 +21,7 @@ public class PlayerAlphabet : MonoBehaviour
     // SO
     public Alphabet pickUpAlphabet;
     private RigidbodyConstraints2D pickUpAlphabetConstraints;
-    private int pickUpAlphabetRotation;
+    public int pickUpAlphabetRotation;
 
     public bool IsReleaseFront = true; // 앞에 두기 위해 살짝 던지는 기능 킬 것인가?.
 

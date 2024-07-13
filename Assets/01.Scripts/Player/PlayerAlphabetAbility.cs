@@ -26,6 +26,7 @@ public class PlayerAlphabetAbility : MonoBehaviour
         }
     }
 
+
     public void InvokeAbility(AlphabetSO alphabetSO)
     {
         if (!GameManager.Instance.PlayerInstance)

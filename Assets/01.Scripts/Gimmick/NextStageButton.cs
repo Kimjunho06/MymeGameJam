@@ -16,12 +16,15 @@ public class NextStageButton : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        foreach (var obj in lockObjs)
+        if (lockObjs.Length > 0)
         {
-            if (!obj.IsLock) return;
+            foreach (var obj in lockObjs)
+            {
+                if (!obj.IsLock) return;
+            }
         }
 
         if (collision.collider.CompareTag("Player"))
-            NextStageEvent?.Invoke();
+            MCSceneManager.Instance.ChangeScene();
     }
 }

@@ -8,7 +8,6 @@ public class AlphabetVAbility : Ability
     
     public override void Init()
     {
-        base.Init();
     }
 
     public override void PlayAbility(PlayerController player)

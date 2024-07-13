@@ -26,9 +26,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -68,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
         else if (XInput < 0f)
             playerLookDir = -1;
 
+        Vector3 scale = transform.localScale;
+        scale.x = playerLookDir;
+
+        transform.localScale = scale;
+
         Vector2 moveDir = new Vector2(XInput, 0);
         moveDir *= moveSpeed;
         moveDir.y = rb.velocity.y;
@@ -100,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveAnimation()
     {
-
+        animator.SetBool("IsMove", (Mathf.Abs(XInput) > 0.05f));
     }
 
     public bool IsGroundDetect()

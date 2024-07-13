@@ -13,22 +13,18 @@ public enum SoundEnum
 public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField]
-    private AudioMixer _masterMixer;
-
-    [SerializeField]
     private AudioClip _bgm;
 
     [SerializeField]
     private AudioClip _sfx;
 
     public AudioClip uiClickSoundClip;
-    public AudioClip playerThrowingSoundClip;
 
     public float soundFadeOnTime;
 
     private AudioSource[] _audioSources = new AudioSource[(int)SoundEnum.SOUNDCOUNT];
 
-    public void InitManager() // Awake
+    protected override void Awake() // Awake
     {
         string[] soundNames = System.Enum.GetNames(typeof(SoundEnum));
         for (int i = 0; i < soundNames.Length - 1; i++)
@@ -43,9 +39,6 @@ public class SoundManager : MonoSingleton<SoundManager>
         _audioSources[(int)SoundEnum.BGM].loop = true;
 
     }
-    public void ResetManager() { }
-
-    public void UpdateManager() { }
 
     public void Play(AudioClip audioClips, SoundEnum type = SoundEnum.EFFECT)
     {
@@ -84,11 +77,6 @@ public class SoundManager : MonoSingleton<SoundManager>
             audioSource.clip = null;
             audioSource.Stop();
         }
-    }
-
-    public void Mute(SoundEnum type, bool mute)
-    {
-        _masterMixer.SetFloat(type.ToString().ToLower(), mute ? -80 : 0);
     }
 
     public void ClickSound()

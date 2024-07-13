@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O
   m_EditorClassIdentifier: 
   capitalLetterSprite: {fileID: 21300000, guid: 44a5881845af1ca4eae9da6de391e4c2, type: 3}
-  smallLetterSprite: {fileID: 21300000, guid: ab3db1101a3aeb64bac45f323640d2cc, type: 3}
+  smallLetterSprite: {fileID: 21300000, guid: 3be17d03698db6b43b476b15167b815c, type: 3}
   alphabetType: 1
   isSamllLetter: 0
