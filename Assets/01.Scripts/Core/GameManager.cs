@@ -32,4 +32,29 @@ public class GameManager : MonoSingleton<GameManager>
 
         }
     }
+
+    public int deathCount = 0;
+    public float playtime = 0;
+    public float progress = 0;
+
+    public bool IsGameStart = false;
+
+    private void Update()
+    {
+        if (IsGameStart)
+        {
+            playtime += Time.deltaTime;
+        }
+    }
+
+    public string RecordPlayTime()
+    {
+        int hour = (int)playtime / 3600;
+        int minute = (int)playtime / 60;
+        int second = (int)playtime % 60;
+
+        string playTimeString = $"{hour} : {minute} : {second}";
+        return playTimeString;
+    }
+
 }

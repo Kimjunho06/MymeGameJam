@@ -7,11 +7,32 @@ public class NextStageButton : MonoBehaviour
 {
     public LockObject[] lockObjs;
 
-    public UnityEvent NextStageEvent;
-
+    private float _endDistance;
     private void Start()
     {
         lockObjs = GameObject.FindObjectsOfType<LockObject>();
+
+        Vector2 trm = transform.position;
+        Vector2 playerTrm = GameManager.Instance.PlayerInstance.transform.position;
+
+        trm.y = 0;
+        playerTrm.y = 0;
+
+        _endDistance = Vector3.Distance(trm, playerTrm);
+    }
+
+    private void Update()
+    {
+        Vector2 trm = transform.position;
+        Vector2 playerTrm = GameManager.Instance.PlayerInstance.transform.position;
+
+        trm.y = 0;
+        playerTrm.y = 0;
+
+        float curDist = 0;
+        curDist = Vector3.Distance(trm, playerTrm);
+
+        GameManager.Instance.progress = 100 - (curDist / _endDistance) * 100f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

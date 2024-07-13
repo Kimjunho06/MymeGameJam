@@ -19,6 +19,11 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
         {
             ResetScene();
         }
+
+        if (Input.GetKeyDown(KeyCode.F1) && Input.GetKey(KeyCode.LeftControl))
+        {
+            ChangeScene();
+        }
     }
 
     /// <summary>
@@ -58,6 +63,7 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
             return;
         }
 
+        GameManager.Instance.deathCount++;
         ChangeScene(CurrentSceneIndex);
     }
 
