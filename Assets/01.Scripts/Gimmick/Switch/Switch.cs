@@ -9,6 +9,18 @@ public class Switch : MonoBehaviour
 
     protected PlayerController player;
 
+    protected SpriteRenderer sprite;
+
+    protected virtual void Awake()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
+
+    protected virtual void Update()
+    {
+        sprite.sprite = IsPressed ? GameManager.Instance.onSwitch : GameManager.Instance.offSwitch;        
+    }
+
     protected bool IsPressedSwitch(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player") )
@@ -20,6 +32,7 @@ public class Switch : MonoBehaviour
         {
             return true;
         }
+
 
         return false;
     }

@@ -16,6 +16,11 @@ public class MultySwitch : Switch
     public MultySwitch[] switches;
     public bool IsPress;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void Start()
     {
         if (state == MultySwitchState.None)
@@ -24,8 +29,9 @@ public class MultySwitch : Switch
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         foreach (var sw in switches)
         {
             if (!sw.IsPress) return;

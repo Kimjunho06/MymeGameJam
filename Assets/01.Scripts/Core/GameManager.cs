@@ -39,6 +39,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     public bool IsGameStart = false;
 
+    public Sprite onSwitch;
+    public Sprite offSwitch;
+
     private void Update()
     {
         if (IsGameStart)
@@ -56,5 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
         string playTimeString = $"{hour} : {minute} : {second}";
         return playTimeString;
     }
+
+    
 
 }
