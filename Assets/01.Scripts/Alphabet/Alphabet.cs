@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Alphabet : MonoBehaviour
@@ -34,7 +33,6 @@ public class Alphabet : MonoBehaviour
         {
             rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-
 
         transform.localScale = size;
     }
@@ -109,6 +107,7 @@ public class Alphabet : MonoBehaviour
         GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
     }
 
+    List<int> passNum = new List<int>();
     private void CheckHeightWall()
     {
         if (transform.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider)) { }
@@ -126,9 +125,11 @@ public class Alphabet : MonoBehaviour
         Debug.DrawRay(startPosRight, Vector2.up * (size.y / 2 * ( 9f / 10f)));
         Debug.DrawRay(startPosMiddle, Vector2.up * (size.y / 2 * (9f / 10f)));
         Debug.DrawRay(startPosLeft, Vector2.up * (size.y / 2 * (  9f / 10f)));
+
         
+
         foreach (RaycastHit2D hit in hits)
-        {
+        {            
             if (hit)
             {
                 GameManager.Instance.PlayerInstance.alphabet.pickUpPos.y -= 10 * Time.deltaTime;

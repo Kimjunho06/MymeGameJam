@@ -22,7 +22,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public float soundFadeOnTime;
 
-    private AudioSource[] _audioSources = new AudioSource[(int)SoundEnum.SOUNDCOUNT];
+    public AudioSource[] _audioSources = new AudioSource[(int)SoundEnum.SOUNDCOUNT];
 
     protected override void Awake() // Awake
     {
