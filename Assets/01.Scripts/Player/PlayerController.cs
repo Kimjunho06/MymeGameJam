@@ -41,6 +41,15 @@ public class PlayerController : MonoBehaviour
         {
             alphabet.PickUp();
         }
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerMovement.animator.SetBool("IsA", true);
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            playerMovement.animator.SetBool("IsA", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.CapsLock))
         {

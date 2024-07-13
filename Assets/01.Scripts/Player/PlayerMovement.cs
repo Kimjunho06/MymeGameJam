@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    private Animator animator;
+    public Animator animator;
 
     private void Awake()
     {

@@ -1921,6 +1921,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 522478554800681466, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522478554800681466, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281193422682682267, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480329402292173299, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480329402292173299, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500873793610817969, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500873793610817969, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774761244383252291, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8277216836478579661, guid: b0cbc8d015ecc4a4480f1b2819c64217, type: 3}
       propertyPath: m_Name
       value: MapCheckingManager

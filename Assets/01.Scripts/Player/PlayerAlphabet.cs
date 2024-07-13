@@ -95,6 +95,7 @@ public class PlayerAlphabet : MonoBehaviour
         float lookDir = GameManager.Instance.PlayerInstance.playerMovement.playerLookDir;
         if (GameManager.Instance.PlayerInstance.playerMovement.IsMoved)
         {
+            GameManager.Instance.PlayerInstance.playerMovement.animator.SetTrigger("IsThrow");
             //Throw
             Vector3 throwVec = throwVector;
             if (pickUpAlphabet.AlphabetSO.isSamllLetter)
@@ -104,11 +105,14 @@ public class PlayerAlphabet : MonoBehaviour
 
             throwVec.x *= lookDir;
             rigidbody.velocity = throwVec;
+
         }
         else
         {
             if (IsReleaseFront)
             {
+                GameManager.Instance.PlayerInstance.playerMovement.animator.SetTrigger("IsRelease");
+
                 Vector3 releasePos = Vector3.zero;
                 releasePos.x = lookDir * releasePosMultiplier;
 
