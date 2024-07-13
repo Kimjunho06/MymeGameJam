@@ -45,6 +45,7 @@ public class MultySwitch : Switch
         if (state == MultySwitchState.Touch)
         {
             IsPress = false;
+            IsPressed = false;
         }
     }
 }

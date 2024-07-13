@@ -10,12 +10,16 @@ public abstract class SwitchActionObject : MonoBehaviour
     {
         foreach (var sw in needSwitch)
         {
-            if (!sw.IsPressed) 
+            if (!sw.IsPressed)
+            {
+                ResetAction();
                 return;
+            } 
 
         }
         InvokeAction();
     }
 
     protected abstract void InvokeAction();
+    protected abstract void ResetAction();
 }

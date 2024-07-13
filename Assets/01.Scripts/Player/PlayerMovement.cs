@@ -39,13 +39,22 @@ public class PlayerMovement : MonoBehaviour
         XInput = Input.GetAxis("Horizontal");
         YInput = Input.GetAxisRaw("Vertical");
 
-        MoveAnimation();
 
         if (IsGroundDetect())
         {
             if (rb.velocity.y > 0) return;
             IsJump = false;
         }
+
+        if (transform.position.y < -10)
+        {
+            if (MCSceneManager.Instance.IsResetScene) return;
+            MCSceneManager.Instance.IsResetScene = true;
+
+            MCSceneManager.Instance.ResetScene();
+        }
+
+        MoveAnimation();
     }
 
     private void FixedUpdate()
@@ -61,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         if (YInput > 0.05f)
         {
             Jump();
-        }          
+        }
     }
 
     private void Move()
@@ -83,13 +92,14 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = moveDir;
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (IsGroundDetect())
         {
             if (IsJump) return;
             if (rb.velocity.y > 0) return;
             IsJump = true;
+
 
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
@@ -109,6 +119,9 @@ public class PlayerMovement : MonoBehaviour
     private void MoveAnimation()
     {
         animator.SetBool("IsMove", (Mathf.Abs(XInput) > 0.05f));
+        animator.SetBool("IsJump", IsJump);
+        animator.SetBool("IsGround", IsGroundDetect());
+        animator.SetBool("IsFall", rb.velocity.y < 0);
     }
 
     public bool IsGroundDetect()

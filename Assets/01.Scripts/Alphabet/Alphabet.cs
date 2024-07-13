@@ -63,8 +63,8 @@ public class Alphabet : MonoBehaviour
             //float xinput = GameManager.Instance.PlayerInstance.playerMovement.XInput;
             //float yinput = GameManager.Instance.PlayerInstance.playerMovement.YInput;
 
-                CheckWidthWall();
-                CheckHeightWall();
+            CheckWidthWall();
+            CheckHeightWall();
             //
             //if (Mathf.Abs(xinput) > 0.05f)
             //{
@@ -79,6 +79,7 @@ public class Alphabet : MonoBehaviour
 
     private void CheckWidthWall()
     {
+        Debug.Log("A");
         float lookDir = GameManager.Instance.PlayerInstance.playerMovement.playerLookDir;
         if (transform.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider)){}
 
@@ -101,13 +102,17 @@ public class Alphabet : MonoBehaviour
             if (hit)
             {
                 GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = 0;
+                Debug.Log("B");
                 return;
             }
         }
-        GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
+
+        if (GameManager.Instance.PlayerInstance.playerMovement.IsGroundDetect())
+        {
+            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
+        }
     }
 
-    List<int> passNum = new List<int>();
     private void CheckHeightWall()
     {
         if (transform.TryGetComponent<PolygonCollider2D>(out PolygonCollider2D collider)) { }

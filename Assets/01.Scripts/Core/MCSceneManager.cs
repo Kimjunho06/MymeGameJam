@@ -8,6 +8,8 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
 {
     public int CurrentSceneIndex = int.MaxValue;
 
+    public bool IsResetScene;
+
     private void Start()
     {
         CurrentSceneIndex = GetSceneIndex();
@@ -38,6 +40,7 @@ public class MCSceneManager : MonoSingleton<MCSceneManager>
         {
             CurrentSceneIndex = sceneIndex;
             SceneManager.LoadScene(sceneIndex);
+            IsResetScene = false;
         }));
     }
 

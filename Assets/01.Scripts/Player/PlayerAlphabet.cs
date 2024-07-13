@@ -171,8 +171,8 @@ public class PlayerAlphabet : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawWireSphere(transform.position, pickCheckRadius);
+        //Gizmos.color = Color.red;
+        //
+        //Gizmos.DrawWireSphere(transform.position, pickCheckRadius);
     }
 }
