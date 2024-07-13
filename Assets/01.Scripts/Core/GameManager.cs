@@ -43,9 +43,18 @@ public class GameManager : MonoSingleton<GameManager>
     public Sprite onSwitch;
     public Sprite offSwitch;
 
+    public SpriteRenderer shineObj;
+    private float shineA;
+
     private void Start()
     {
         SoundManager.Instance.Play(SoundManager.Instance._bgm, SoundEnum.BGM);
+        shineA = shineObj.color.a;
+
+        Color color = shineObj.color;
+        color.a = 0;
+
+        shineObj.color = color;
     }
 
     private void Update()
@@ -53,6 +62,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (IsGameStart)
         {
             playtime += Time.deltaTime;
+
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -71,6 +81,21 @@ public class GameManager : MonoSingleton<GameManager>
         return playTimeString;
     }
 
-    
+    public void ShineOn()
+    {
+        StartCoroutine(ShineOnCoroutine());
+    }
 
+    private IEnumerator ShineOnCoroutine()
+    {
+        while (shineA >= shineObj.color.a)
+        {
+            Color color = shineObj.color;
+            color.a += Time.deltaTime * 0.5f;
+
+            shineObj.color = color;
+            yield return null;
+        }
+
+    }
 }
