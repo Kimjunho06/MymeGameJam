@@ -68,6 +68,9 @@ public class GameManager : MonoSingleton<GameManager>
         if (Input.GetMouseButtonDown(0))
         {
             SoundManager.Instance.ClickSound();
+            
+            if (!IsGameStart)
+                MCSceneManager.Instance.ChangeScene(1);
         }
     }
 

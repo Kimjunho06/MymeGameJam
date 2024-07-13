@@ -122,6 +122,7 @@ public class PlayerAlphabet : MonoBehaviour
             }
         }
 
+        GameManager.Instance.PlayerInstance.ability.ResetAbility(pickUpAlphabet.AlphabetSO);
 
         IsPickUp = false;
         pickUpAlphabet = null;

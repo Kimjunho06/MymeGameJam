@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject optionPanel;
+    public GameObject playerPanel;
     private bool IsOpenOption;
 
     public Slider masterSlider;
@@ -18,17 +20,32 @@ public class UIManager : MonoSingleton<UIManager>
 
     public AudioClip menuSound;
 
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI deathCountText;
+    public Slider progressBar;
+
+    public Image currentAlphabetImage;
+    public Image captialLetterImage;
+    public Image smallLetterImage;
+
+    public Sprite transparentSprite;
+
     private void Start()
     {
         Init();
         SceneManager.sceneLoaded += Init;
-
+        playerPanel.SetActive(false);
     }
 
     private void Init(Scene scene, LoadSceneMode loadSceneMode)
     {
         IsOpenOption = true;
         OnOption();
+        if (!GameManager.Instance.IsGameStart)
+        {
+            GameManager.Instance.IsGameStart = true;
+            playerPanel.SetActive(true);
+        }
 
         fadeImage.gameObject.SetActive(true);
         fadeImage.color = Color.black;
@@ -55,6 +72,51 @@ public class UIManager : MonoSingleton<UIManager>
 
         SetBGMSetting();
         SetSfxSetting();
+
+        timeText.SetText(GameManager.Instance.RecordPlayTime());
+        deathCountText.SetText("Death Count : " + GameManager.Instance.deathCount.ToString());
+        progressBar.value = GameManager.Instance.progress / 100;
+
+        if (GameManager.Instance.IsGameStart)
+        {
+            if (GameManager.Instance.PlayerInstance.alphabet.IsPickUp)
+            {
+                Sprite captialSprite = GameManager.Instance.PlayerInstance.alphabet.pickUpAlphabet.AlphabetSO.capitalLetterSprite;
+                Sprite smallSprite = GameManager.Instance.PlayerInstance.alphabet.pickUpAlphabet.AlphabetSO.smallLetterSprite;
+
+                captialLetterImage.sprite = captialSprite;
+                smallLetterImage.sprite = smallSprite;
+                if (!GameManager.Instance.PlayerInstance.alphabet.pickUpAlphabet.AlphabetSO.isSamllLetter)
+                {
+                    currentAlphabetImage.sprite = captialSprite;
+
+                    captialLetterImage.transform.localScale = Vector3.one * 1.2f;
+                    captialLetterImage.color = Color.yellow;
+
+                    smallLetterImage.transform.localScale = Vector3.one;
+                    smallLetterImage.color = Color.gray;
+                    smallLetterImage.material = null;
+                }
+                else
+                {
+                    currentAlphabetImage.sprite = smallSprite;
+
+                    smallLetterImage.transform.localScale = Vector3.one * 1.2f;
+                    smallLetterImage.color = Color.yellow;
+
+                    captialLetterImage.transform.localScale = Vector3.one;
+                    captialLetterImage.color = Color.gray;
+                    captialLetterImage.material = null;
+                }
+
+            }
+            else
+            {
+                currentAlphabetImage.sprite = transparentSprite;
+                captialLetterImage.sprite = transparentSprite;
+                smallLetterImage.sprite = transparentSprite;
+            }
+        }
     }
 
     public void OnOption()

@@ -8,7 +8,7 @@ public class MoveWall : MonoBehaviour
 
     private void Update()
     {
-        speed += Time.deltaTime * 0.005f;
+        speed += Time.deltaTime * 0.0025f;
 
         transform.position += Vector3.right * speed;
     }
