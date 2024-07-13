@@ -15,4 +15,4 @@ MonoBehaviour:
   capitalLetterSprite: {fileID: 21300000, guid: 09bb5227a11bf874785d18d474051c1a, type: 3}
   smallLetterSprite: {fileID: 21300000, guid: 1a588250753354a49af17384b3cc3fc1, type: 3}
   alphabetType: 3
-  isSamllLetter: 1
+  isSamllLetter: 0

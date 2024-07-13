@@ -1601,7 +1601,7 @@ Transform:
   - {fileID: 7464152312483828530}
   - {fileID: 7654380744081121941}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1410847163821522420
 MonoBehaviour:
@@ -1904,7 +1904,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 58.62, y: 10.8}
+  m_Size: {x: 533, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
