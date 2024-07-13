@@ -155,6 +155,34 @@ public class Alphabet : MonoBehaviour
         GameManager.Instance.PlayerInstance.alphabet.pickUpPos = Vector3.Lerp(GameManager.Instance.PlayerInstance.alphabet.pickUpPos, GameManager.Instance.PlayerInstance.DefaultPickUpPos, Time.deltaTime * 3);
     }
 
+    private Coroutine impactCoroutine = null;
+
+    public void CaseChangeImpact()
+    {
+        Vector3 scale = transform.localScale;
+
+        if (impactCoroutine != null)
+        {
+            StopCoroutine(impactCoroutine);
+            transform.localScale = scale;
+        }
+        impactCoroutine = StartCoroutine(DOScale(scale));
+    }
+
+    private IEnumerator DOScale(Vector3 scale)
+    {
+        
+        Vector3 targetScale = transform.localScale * 0.1f;
+        targetScale += transform.lossyScale;
+        
+        while (transform.localScale.x <= targetScale.x)
+        {
+            transform.localScale += Vector3.one * Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = scale;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Balloon"))

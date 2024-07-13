@@ -12,6 +12,8 @@ public class TouchSwitch : Switch
     protected override void Update()
     {
         base.Update();
+        
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

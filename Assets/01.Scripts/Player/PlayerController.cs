@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
             if (alphabet.IsPickUp)
             {
                 alphabet.pickUpAlphabet.AlphabetSO.CaseChange();
+                alphabet.pickUpAlphabet.CaseChangeImpact();
                 alphabet.pickUpAlphabet.changeCollider = true;
             }
 
