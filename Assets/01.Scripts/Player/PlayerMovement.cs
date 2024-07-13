@@ -39,6 +39,13 @@ public class PlayerMovement : MonoBehaviour
         XInput = Input.GetAxis("Horizontal");
         YInput = Input.GetAxisRaw("Vertical");
 
+        if (Mathf.Abs(XInput) < 0.05f && Mathf.Abs(YInput) < 0.05f)
+        {
+            Vector2 velo = rb.velocity;
+            velo.x = 0;
+
+            rb.velocity = velo;
+        }
 
         if (IsGroundDetect())
         {

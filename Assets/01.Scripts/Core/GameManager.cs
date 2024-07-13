@@ -93,22 +93,6 @@ public class GameManager : MonoSingleton<GameManager>
                 MCSceneManager.Instance.ChangeScene(1);
             }
         }
-
-        if (!Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Input.anyKeyDown)
-            {
-                if (!IsGameStart && MCSceneManager.Instance.CurrentSceneIndex != 1 && MCSceneManager.Instance.CurrentSceneIndex != 5)
-                {
-                    if (isSeeManhwa) return;
-
-                    isSeeManhwa = true;
-
-                    SoundManager.Instance.ClickSound();
-                    MCSceneManager.Instance.ChangeScene(1);
-                }
-            }
-        }
     }
 
     public string RecordPlayTime()
