@@ -325,6 +325,8 @@ MonoBehaviour:
   groundCheckDistance: 0.7
   wallCheckDistance: 0.6
   wallSlideMultiplier: 0.7
+  XInput: 0
+  YInput: 0
   playerLookDir: 1
   whatIsGround:
     serializedVersion: 2
@@ -720,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4294190107904485900, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.21
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 4294190107904485900, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -762,6 +764,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alphabet
       objectReference: {fileID: 0}
+    - target: {fileID: 8620580789386012284, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
+      propertyPath: size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620580789386012284, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
+      propertyPath: size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620580789386012284, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
+      propertyPath: size.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620580789386012284, guid: 3ce1046912e1bf0448f0bc183239908c, type: 3}
+      propertyPath: whatIsWall.m_Bits
+      value: 2560
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -799,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPressed: 0
+  IsElectronicSwitch: 0
   state: 1
   switches:
   - {fileID: 1882539189}
@@ -864,7 +883,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514970635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 2.58, z: 0}
+  m_LocalPosition: {x: 0.8, y: 2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -928,7 +947,7 @@ GameObject:
   - component: {fileID: 1534515685}
   - component: {fileID: 1534515687}
   - component: {fileID: 1534515688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +1014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534515684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.86, y: 2.68, z: 0}
+  m_LocalPosition: {x: 2.86, y: 2.7700002, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1285,7 +1304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882539186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6693365, y: 2.58, z: 0}
+  m_LocalPosition: {x: -0.6693365, y: 2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1305,6 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPressed: 0
+  IsElectronicSwitch: 0
   state: 1
   switches:
   - {fileID: 1882539189}

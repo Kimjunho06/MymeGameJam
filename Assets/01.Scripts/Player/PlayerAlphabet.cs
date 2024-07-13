@@ -34,13 +34,8 @@ public class PlayerAlphabet : MonoBehaviour
     {
         if (IsPickUp)
         {
-            //if (pickUpAlphabet.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid))
-            //{
-            //    rigid.position = transform.position + pickUpPos;
-            //}
             pickUpAlphabet.transform.position = transform.position + pickUpPos;
         }
-
     }
 
     public void PickUp()

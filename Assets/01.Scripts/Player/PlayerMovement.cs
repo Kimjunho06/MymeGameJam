@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float wallSlideMultiplier = 0.7f;
 
     [Header("Develop Parameters")]
-    private float XInput;
-    private float YInput;
+    public float XInput;
+    public float YInput;
 
     public int playerLookDir = 1;
 

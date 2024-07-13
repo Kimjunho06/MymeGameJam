@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     public float DefaultMoveSpeed;
 
+    public Vector2 DefaultPickUpPos;
+
     public bool IsUnlockable;
     public bool IsElectronic;
 
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DefaultMoveSpeed = playerMovement.moveSpeed;
+        DefaultPickUpPos = alphabet.pickUpPos;
     }
 
     private void Update()
