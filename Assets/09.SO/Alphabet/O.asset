@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1641dd16ca469b94e9d8cc6b89017d0a, type: 3}
   m_Name: O
   m_EditorClassIdentifier: 
-  capitalLetterSprite: {fileID: 21300000, guid: 44a5881845af1ca4eae9da6de391e4c2, type: 3}
-  smallLetterSprite: {fileID: 21300000, guid: 3be17d03698db6b43b476b15167b815c, type: 3}
+  capitalLetterSprite: {fileID: 21300000, guid: e730d1f5e3125c645856858a980acc8b, type: 3}
+  smallLetterSprite: {fileID: 21300000, guid: a671be86bc0d32e4eb5d7c6f8e888fd7, type: 3}
   alphabetType: 1
   isSamllLetter: 0
