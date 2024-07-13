@@ -59,6 +59,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Update()
     {
+        if (MCSceneManager.Instance.CurrentSceneIndex == 5)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Application.Quit();
+            }
+        }
+
         if (IsGameStart)
         {
             playtime += Time.deltaTime;
@@ -68,8 +76,13 @@ public class GameManager : MonoSingleton<GameManager>
         if (Input.GetMouseButtonDown(0))
         {
             SoundManager.Instance.ClickSound();
+         
+            if (UIManager.Instance.optionPanel.activeSelf)
+            {
+                return;
+            }
             
-            if (!IsGameStart)
+            if (!IsGameStart && MCSceneManager.Instance.CurrentSceneIndex != 1 && MCSceneManager.Instance.CurrentSceneIndex != 5)
                 MCSceneManager.Instance.ChangeScene(1);
         }
     }

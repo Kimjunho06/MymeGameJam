@@ -41,7 +41,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         IsOpenOption = true;
         OnOption();
-        if (!GameManager.Instance.IsGameStart)
+        if (!GameManager.Instance.IsGameStart && MCSceneManager.Instance.CurrentSceneIndex > 1)
         {
             GameManager.Instance.IsGameStart = true;
             playerPanel.SetActive(true);
@@ -79,6 +79,11 @@ public class UIManager : MonoSingleton<UIManager>
 
         if (GameManager.Instance.IsGameStart)
         {
+            if (MCSceneManager.Instance.CurrentSceneIndex == 5)
+            {
+                GameManager.Instance.IsGameStart = false;
+                return;
+            }
             if (GameManager.Instance.PlayerInstance.alphabet.IsPickUp)
             {
                 Sprite captialSprite = GameManager.Instance.PlayerInstance.alphabet.pickUpAlphabet.AlphabetSO.capitalLetterSprite;

@@ -55,6 +55,11 @@ public class NextStageButton : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
+            if (MCSceneManager.Instance.CurrentSceneIndex == 4)
+            {
+                GameManager.Instance.IsGameStart = false;
+            }
+
             SoundManager.Instance.Play(_audioSource.clip);
             MCSceneManager.Instance.ChangeScene();
         }

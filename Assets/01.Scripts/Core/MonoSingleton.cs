@@ -41,6 +41,11 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private void Update()
+    {
+        
+    }
+
     protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
 

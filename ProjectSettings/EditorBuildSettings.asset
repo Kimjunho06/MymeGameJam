@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/00.Scenes/Play/Main.unity
     guid: 6c83decf26cd99144894a968398bfb67
   - enabled: 1
+    path: Assets/00.Scenes/Play/Manhwa.unity
+    guid: 5c3b935ca0641d1429af3ca28e790413
+  - enabled: 1
     path: Assets/00.Scenes/Play/Map 1.unity
     guid: 845bb65c560ee7a47aecfc5819358c75
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/Play/Map 3.unity
     guid: 140aaa0836948f343ba58c3e5f55c976
+  - enabled: 1
+    path: Assets/00.Scenes/Play/Ending.unity
+    guid: 7d819fa367e1bd248942b805aed636be
   m_configObjects: {}
