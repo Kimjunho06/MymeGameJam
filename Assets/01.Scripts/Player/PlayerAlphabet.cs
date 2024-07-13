@@ -96,6 +96,8 @@ public class PlayerAlphabet : MonoBehaviour
         if (GameManager.Instance.PlayerInstance.playerMovement.IsMoved)
         {
             GameManager.Instance.PlayerInstance.playerMovement.animator.SetTrigger("IsThrow");
+            SoundManager.Instance.Play(GameManager.Instance.PlayerInstance.throwSound);
+
             //Throw
             Vector3 throwVec = throwVector;
             if (pickUpAlphabet.AlphabetSO.isSamllLetter)
@@ -105,12 +107,12 @@ public class PlayerAlphabet : MonoBehaviour
 
             throwVec.x *= lookDir;
             rigidbody.velocity = throwVec;
-
         }
         else
         {
             if (IsReleaseFront)
             {
+                SoundManager.Instance.Play(GameManager.Instance.PlayerInstance.throwSound);
                 GameManager.Instance.PlayerInstance.playerMovement.animator.SetTrigger("IsRelease");
 
                 Vector3 releasePos = Vector3.zero;

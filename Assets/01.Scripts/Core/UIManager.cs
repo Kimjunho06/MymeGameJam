@@ -16,6 +16,8 @@ public class UIManager : MonoSingleton<UIManager>
     public Image fadeImage;
     public bool IsFadeEnd;
 
+    public AudioClip menuSound;
+
     private void Start()
     {
         Init();
@@ -47,6 +49,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SoundManager.Instance.Play(menuSound);
             OnOption();
         }
 

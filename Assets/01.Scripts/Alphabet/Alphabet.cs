@@ -92,10 +92,6 @@ public class Alphabet : MonoBehaviour
             //    CheckHeightWall();
             //}
         }
-        else
-        {
-            GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = GameManager.Instance.PlayerInstance.DefaultMoveSpeed;
-        }
     }
 
     private void CheckWidthWall()
@@ -121,7 +117,8 @@ public class Alphabet : MonoBehaviour
         {
             if (hit)
             {
-                GameManager.Instance.PlayerInstance.playerMovement.moveSpeed = 0;
+                Vector2 movePos = new Vector2(-GameManager.Instance.PlayerInstance.playerMovement.playerLookDir, GameManager.Instance.PlayerInstance.playerMovement.rb.velocity.y);
+                GameManager.Instance.PlayerInstance.playerMovement.rb.velocity = movePos;
                 return;
             }
         }

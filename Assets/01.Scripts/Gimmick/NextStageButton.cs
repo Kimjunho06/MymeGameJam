@@ -8,6 +8,14 @@ public class NextStageButton : MonoBehaviour
     public LockObject[] lockObjs;
 
     private float _endDistance;
+
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         lockObjs = GameObject.FindObjectsOfType<LockObject>();
@@ -46,6 +54,9 @@ public class NextStageButton : MonoBehaviour
         }
 
         if (collision.collider.CompareTag("Player"))
+        {
+            SoundManager.Instance.Play(_audioSource.clip);
             MCSceneManager.Instance.ChangeScene();
+        }
     }
 }

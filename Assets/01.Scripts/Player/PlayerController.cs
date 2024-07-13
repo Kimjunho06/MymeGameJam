@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool IsUnlockable;
     public bool IsElectronic;
 
+    public AudioClip jumpSound;
+    public AudioClip throwSound;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -42,11 +43,21 @@ public class GameManager : MonoSingleton<GameManager>
     public Sprite onSwitch;
     public Sprite offSwitch;
 
+    private void Start()
+    {
+        SoundManager.Instance.Play(SoundManager.Instance._bgm, SoundEnum.BGM);
+    }
+
     private void Update()
     {
         if (IsGameStart)
         {
             playtime += Time.deltaTime;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            SoundManager.Instance.ClickSound();
         }
     }
 

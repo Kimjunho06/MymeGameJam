@@ -100,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
             if (rb.velocity.y > 0) return;
             IsJump = true;
 
+            SoundManager.Instance.Play(GameManager.Instance.PlayerInstance.jumpSound);
 
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }

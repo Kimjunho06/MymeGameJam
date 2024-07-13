@@ -172,6 +172,8 @@ MonoBehaviour:
   DefaultPickUpPos: {x: 0, y: 0}
   IsUnlockable: 0
   IsElectronic: 0
+  jumpSound: {fileID: 8300000, guid: c4f3066206114db439e01791e6935c17, type: 3}
+  throwSound: {fileID: 8300000, guid: f9dbe07e720544645a3c41c2ce6809cb, type: 3}
 --- !u!114 &1832619376866751377
 MonoBehaviour:
   m_ObjectHideFlags: 0

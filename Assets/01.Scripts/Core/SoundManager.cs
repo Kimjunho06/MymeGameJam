@@ -13,7 +13,7 @@ public enum SoundEnum
 public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField]
-    private AudioClip _bgm;
+    public AudioClip _bgm;
 
     [SerializeField]
     private AudioClip _sfx;
