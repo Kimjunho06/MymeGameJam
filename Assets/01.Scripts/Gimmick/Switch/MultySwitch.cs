@@ -28,7 +28,7 @@ public class MultySwitch : Switch
     {
         foreach (var sw in switches)
         {
-            if (!IsPress) return;
+            if (!sw.IsPress) return;
         }
         IsPressed = true;
     }

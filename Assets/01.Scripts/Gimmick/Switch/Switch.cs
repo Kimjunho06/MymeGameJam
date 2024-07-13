@@ -33,6 +33,8 @@ public class Switch : MonoBehaviour
                 return true;
             }
         }
+        else
+            return true;
 
         return false;
     }
